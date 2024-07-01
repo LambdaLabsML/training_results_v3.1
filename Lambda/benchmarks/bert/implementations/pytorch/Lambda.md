@@ -90,12 +90,12 @@ It took ~48 hours to get all data prepared. (24 hours spent on package the datas
 
 ```
 # Single node
-export HEADNODE_HOSTNAME=$(hostname) \
+export HEADNODE_HOSTNAME=$(hostname) && \
 source ./config_1cc_1x8x48x1_pack.sh && \
 sbatch -N1 --ntasks-per-node=8 --gres=gpu:8 run_1cc.sub
 
 # 2x nodes
-export HEADNODE_HOSTNAME=$(hostname) \
+export HEADNODE_HOSTNAME=$(hostname) && \
 source ./config_1cc_2x8x36x1_pack.sh && \
 sbatch -N2 --ntasks-per-node=8 --gres=gpu:8 run_1cc.sub
 ```
