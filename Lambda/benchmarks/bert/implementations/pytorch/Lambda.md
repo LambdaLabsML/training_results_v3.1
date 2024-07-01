@@ -83,7 +83,19 @@ sudo chmod -R 777 $DATAPATH
 sbatch  --export=HEADNODE_HOSTNAME=$HEADNODE_HOSTNAME,DATAPATH=$DATAPATH dataset.sub
 ```
 
-It took ~48 hours to get all data prepared. (24 hours spent on package the dataset).
+It took ~48 hours to get all data prepared. (24 hours spent on package the dataset). The following folders should be created: 
+```
+ubuntu@head1:~/ml-1cc/data/mlperf/bert$ ls -la
+total 0
+drwxrwxrwx 2 root   root   4096 Jul  1 14:14 .
+drwxrwxrwx 2 root   ubuntu 4096 Jun 30 15:11 ..
+drwxrwxrwx 2 ubuntu ubuntu 4096 Jun 30 15:19 download
+drwxrwxrwx 2 ubuntu ubuntu 4096 Jun 17 14:21 hdf5
+drwxrwxrwx 2 ubuntu ubuntu 4096 Jul  1 14:04 packed_data
+drwxrwxrwx 2 ubuntu ubuntu 4096 Jun 30 15:01 per_seqlen
+drwxrwxrwx 2 ubuntu ubuntu 4096 Jun 17 22:44 per_seqlen_parts
+drwxrwxrwx 2 ubuntu ubuntu 4096 Jun 30 15:24 phase1
+```
 
 
 ## Run training
