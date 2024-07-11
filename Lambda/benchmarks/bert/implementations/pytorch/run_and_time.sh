@@ -144,9 +144,9 @@ if [ -n "${SLURM_LOCALID-}" ]; then
   BERT_CMD="${BERT_CMD} --local_rank=${SLURM_LOCALID} "
 fi
 
-#if [[ $USE_DDP != 1 || $GRADIENT_STEPS != 1 ]]; then
+# if [[ $USE_DDP != 1 || $GRADIENT_STEPS != 1 ]]; then
 #    BERT_CMD="${BERT_CMD} --allreduce_post_accumulation --allreduce_post_accumulation_fp16"
-#fi
+# fi
 
 if [[ ${SYNTH_DATA} -ge 1 ]]; then
  EXTRA_PARAMS+=" --synthetic_input "

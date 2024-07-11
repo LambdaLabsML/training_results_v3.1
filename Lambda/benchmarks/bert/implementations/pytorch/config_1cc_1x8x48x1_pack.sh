@@ -1,16 +1,16 @@
 ## DL params
 export BATCHSIZE=48
-export PACKING_FACTOR=2
 export GRADIENT_STEPS=1
-export LR=0.00096
+export PACKING_FACTOR=1
+export LR=0.002
 export MAX_SAMPLES_TERMINATION=450000000
-export MAX_STEPS=3680
-export OPT_LAMB_BETA_1=0.60466
-export OPT_LAMB_BETA_2=0.85437
+export MAX_STEPS=6000
+export OPT_LAMB_BETA_1=0.66
+export OPT_LAMB_BETA_2=0.996
 export START_WARMUP_STEP=0
 export WARMUP_PROPORTION=0.0
-export WEIGHT_DECAY_RATE=0.1
-export INIT_LOSS_SCALE=1024.0
+export WEIGHT_DECAY_RATE=0.01
+export INIT_LOSS_SCALE=4096.0
 
 export EXTRA_PARAMS="--dense_seq_output --pad_fmha --fused_bias_fc --fused_bias_mha --fused_dropout_add --fused_gemm_gelu --packed_samples --use_transformer_engine2 --cuda_graph_mode 'segmented' --use_cuda_graph "
 export PHASE=2

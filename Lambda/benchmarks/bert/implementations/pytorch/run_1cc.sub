@@ -179,11 +179,17 @@ fi
 echo "CI directory structure\n"
 echo $(ls)
 
-DATADIR_PHASE2="/home/ubuntu/ml-1cc/data/mlperf/bert/packed_data"
-CHECKPOINTDIR_PHASE1="/home/ubuntu/ml-1cc/data/mlperf/bert/phase1"
-EVALDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/hdf5/eval"
-LOGDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/results"
+# DATADIR_PHASE2="/home/ubuntu/ml-1cc/data/mlperf/bert/packed_data"
+# CHECKPOINTDIR_PHASE1="/home/ubuntu/ml-1cc/data/mlperf/bert/phase1"
+# EVALDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/hdf5/eval"
+# LOGDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/results"
 
+export DATADIR="/home/ubuntu/ml-1cc/data/mlperf/bert/packed_data"
+export EVALDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/hdf5/eval_varlength"
+export DATADIR_PHASE2="$DATADIR"
+export CHECKPOINTDIR_PHASE1="/home/ubuntu/ml-1cc/data/mlperf/bert/phase1"
+export CHECKPOINTDIR="$CHECKPOINTDIR_PHASE1"
+LOGDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/results"
 
 export NCCL_DEBUG=WARN
 export NCCL_P2P_LEVEL=NVL
