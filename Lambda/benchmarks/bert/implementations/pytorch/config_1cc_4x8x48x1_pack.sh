@@ -4,7 +4,7 @@ export GRADIENT_STEPS=1
 export PACKING_FACTOR=1
 export LR=0.002
 export MAX_SAMPLES_TERMINATION=450000000
-export MAX_STEPS=6000
+export MAX_STEPS=2000
 export OPT_LAMB_BETA_1=0.66
 export OPT_LAMB_BETA_2=0.996
 export START_WARMUP_STEP=0
@@ -19,7 +19,7 @@ export EVAL_ITER_START_SAMPLES=175000
 export EVAL_ITER_SAMPLES=175000
 
 ## System run parms                                                                                                                                                                                                   
-export DGXNNODES=2
+export DGXNNODES=4
 export DGXSYSTEM="1CC"
 export WALLTIME_MINUTES=4
 if [[ "${MLPERF_POWER_TRAIN_AFTER_RUN_STOP:-0}" == "1" ]]; then
