@@ -4,7 +4,7 @@ export PACKING_FACTOR=2
 export GRADIENT_STEPS=1
 export LR=0.00096
 export MAX_SAMPLES_TERMINATION=450000000
-export MAX_STEPS=3680
+export MAX_STEPS=6000
 export OPT_LAMB_BETA_1=0.60466
 export OPT_LAMB_BETA_2=0.85437
 export START_WARMUP_STEP=0
@@ -39,3 +39,8 @@ source $(dirname ${BASH_SOURCE[0]})/config_DGXH100_common.sh
 
 export CONTAINER_PRELOAD_LUSTRE=0
 export DATADIR_PHASE2=${DATADIR_PHASE2_PACKED}
+
+## log dir
+timestamp=$(date +'%y-%m-%d_%H-%M-%S')
+export LOGDIR=./results/1cc_2x8x48x1_${timestamp}
+mkdir -p ${LOGDIR}

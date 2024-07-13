@@ -108,8 +108,14 @@ sbatch -N1 --ntasks-per-node=8 --gres=gpu:8 run_1cc.sub
 
 # 2x nodes
 export HEADNODE_HOSTNAME=$(hostname) && \
-source ./config_1cc_2x8x36x1_pack.sh && \
+source ./config_1cc_2x8x48x1_pack.sh && \
 sbatch -N2 --ntasks-per-node=8 --gres=gpu:8 run_1cc.sub
+
+
+# 4x nodes
+export HEADNODE_HOSTNAME=$(hostname) && \
+source ./config_1cc_4x8x48x1_pack.sh && \
+sbatch -N4 --ntasks-per-node=8 --gres=gpu:8 run_1cc.sub
 ```
 
 You should see training finished with log like this

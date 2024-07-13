@@ -39,3 +39,8 @@ source $(dirname ${BASH_SOURCE[0]})/config_DGXH100_common.sh
 
 export CONTAINER_PRELOAD_LUSTRE=0
 export DATADIR_PHASE2=${DATADIR_PHASE2_PACKED}
+
+## log dir
+timestamp=$(date +'%y-%m-%d_%H-%M-%S')
+export LOGDIR=./results/1cc_4x8x48x1_${timestamp}
+mkdir -p ${LOGDIR}

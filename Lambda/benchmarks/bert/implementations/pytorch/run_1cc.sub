@@ -179,17 +179,12 @@ fi
 echo "CI directory structure\n"
 echo $(ls)
 
-# DATADIR_PHASE2="/home/ubuntu/ml-1cc/data/mlperf/bert/packed_data"
-# CHECKPOINTDIR_PHASE1="/home/ubuntu/ml-1cc/data/mlperf/bert/phase1"
-# EVALDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/hdf5/eval"
-# LOGDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/results"
 
 export DATADIR="/home/ubuntu/ml-1cc/data/mlperf/bert/packed_data"
 export EVALDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/hdf5/eval_varlength"
 export DATADIR_PHASE2="$DATADIR"
 export CHECKPOINTDIR_PHASE1="/home/ubuntu/ml-1cc/data/mlperf/bert/phase1"
 export CHECKPOINTDIR="$CHECKPOINTDIR_PHASE1"
-LOGDIR="/home/ubuntu/ml-1cc/data/mlperf/bert/results"
 
 export NCCL_DEBUG=WARN
 export NCCL_P2P_LEVEL=NVL
@@ -234,16 +229,20 @@ fi
 # Setup directories
 ( umask 0002; mkdir -p "${LOGDIR}" )
 
+
 # Setup container
 echo MELLANOX_VISIBLE_DEVICES="${MELLANOX_VISIBLE_DEVICES:-}"
 srun --ntasks="$((SLURM_JOB_NUM_NODES))" --container-mounts=/dev/infiniband/uverbs0:/dev/infiniband/uverbs0 --container-image="${CONT_FILE}" --container-name="${_cont_name}" true
-srun -N1 -n1 --container-mounts=/dev/infiniband/uverbs0:/dev/infiniband/uverbs0 --container-name="${_cont_name}" ibv_devinfo --list
-srun -N1 -n1 --container-mounts=/dev/infiniband/uverbs0:/dev/infiniband/uverbs0 --container-name="${_cont_name}" nvidia-smi topo -m
 
-srun -l --mpi="pmix" \
-     --container-image="${HEADNODE_HOSTNAME}:5000#local/mlperf-nvidia-24.05:language_model" \
-     --container-mounts=${_cont_mounts} \
-     all_reduce_perf_mpi -b 21M -e 672M -d half -G 1 -f 2
+
+# # NCCL_TEST
+# srun -N1 -n1 --container-mounts=/dev/infiniband/uverbs0:/dev/infiniband/uverbs0 --container-name="${_cont_name}" ibv_devinfo --list
+# srun -N1 -n1 --container-mounts=/dev/infiniband/uverbs0:/dev/infiniband/uverbs0 --container-name="${_cont_name}" nvidia-smi topo -m
+
+# srun -l --mpi="pmix" \
+#      --container-image="${HEADNODE_HOSTNAME}:5000#local/mlperf-nvidia-24.05:language_model" \
+#      --container-mounts=${_cont_mounts} \
+#      all_reduce_perf_mpi -b 21M -e 672M -d half -G 1 -f 2
 
 
 #ssh to nodes for power measurements
